@@ -10,7 +10,8 @@ app.directive('myRating', function () {
                 '</ul>',
       scope: {
         ratingValue: '=',
-        max: '='
+        max: '=',
+        readonly: '@'
       },
       link: function (scope, elem, attrs) {
 
@@ -22,6 +23,9 @@ app.directive('myRating', function () {
         };
 
         scope.toggle = function(index) {
+          if (scope.readonly && scope.readonly === 'true') {
+            return;
+          }
           scope.ratingValue = index + 1;
         };
 

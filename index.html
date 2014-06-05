@@ -7,7 +7,10 @@
   </head>
   <body ng-app="myApp" ng-init="rating = 5">
     Rating is {{rating}} <br/>
+    Clickable Rating <br/>
     <div my-rating rating-value="rating" max="10"></div>
+    Readonly rating <br/>
+    <div my-rating rating-value="rating" max="10" readonly="true"></div>
     <button ng-click="rating = 7">Change rating to 7</button>
   </body>
 </html>
