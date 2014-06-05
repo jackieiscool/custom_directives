@@ -5,7 +5,8 @@
     <script src="script.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-  <body ng-app="myApp">
-    <div my-rating></div>
+  <body ng-init="rating = 5">
+    Rating is {{rating}} <br/>
+    <div my-rating rating-value="rating"></div>
   </body>
 </html>
