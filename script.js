@@ -1,5 +1,12 @@
 var app = angular.module('myApp', [])
 
+app.controller('RatingController', function($scope, $window) {
+    $scope.rating = 5;
+    $scope.saveRatingToServer = function(rating) {
+      $window.alert('Rating selected - ' + rating);
+    };
+  });
+
 app.directive('myRating', function () {
     return {
       restrict: 'A',
@@ -11,7 +18,8 @@ app.directive('myRating', function () {
       scope: {
         ratingValue: '=',
         max: '=',
-        readonly: '@'
+        readonly: '@',
+        onRatingSelected: '&'
       },
       link: function (scope, elem, attrs) {
 
@@ -27,6 +35,7 @@ app.directive('myRating', function () {
             return;
           }
           scope.ratingValue = index + 1;
+          scope.onRatingSelected({rating: index + 1});
         };
 
         scope.$watch('ratingValue', function(oldVal, newVal) {
